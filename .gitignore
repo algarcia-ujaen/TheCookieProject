@@ -31,7 +31,8 @@
 *.out
 *.app
 
-# NetBeans project folder
-nbproject
+# NetBeans project folders
+/nbproject/
 /build/
 /dist/
+/doc/

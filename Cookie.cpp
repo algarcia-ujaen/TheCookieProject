@@ -1,24 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * File:   Cookie.cpp
- * Author: algarcia
+/**
+ * @file Cookie.cpp
+ * Implementation of the Cookie class methods
  *
- * Created on 12 de febrero de 2020, 9:59
+ * @author algarcia
+ * @date February 12, 2020, 9:59
  */
 
 #include <new>
 
 #include "Cookie.h"
 
-
+/**
+ * @brief Completely parameterized constructor
+ *
+ * Initializes every attribute with the parameters or the default values
+ * @param newName Name of the cookie
+ * @param isGF Is it gluten free?
+ * @param cals Number of calories per 100g
+ * @param nI Number of ingredients
+ * @post Memory is allocated for the number of ingredients given. Every
+ *       ingredient is initialized to an empty string
+ * @throw std::bad_alloc If it has not been possible to allocate a memory block
+ *        for the ingredients
+ * @throw std::string If the value of cals or nI is less than or equal to 0
+ */
 Cookie::Cookie ( const std::string newName, bool isGF,
                  float cals, int nI ) try : _name ( newName ), _glutenFree ( isGF ),
-                                       _calories ( cals ), _ingredientsSize ( nI )
+                                            _calories ( cals ), _ingredientsSize ( nI )
 {
    if ( cals <= 0 )
    {
@@ -93,7 +101,7 @@ bool Cookie::isGlutenFree ( ) const
    return _glutenFree;
 }
 
-Cookie& Cookie::setName ( std::string name )
+Cookie& Cookie::setName ( const std::string& name )
 {
    this->_name = name;
    return *this;
