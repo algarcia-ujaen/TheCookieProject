@@ -11,6 +11,8 @@
 
 #include <string>
 
+#include "Recipe.h"
+
 /**
  * @brief Cookie example class for the 2019-2020 academic year
  * 
@@ -23,13 +25,11 @@ class Cookie
       std::string _name = "";     ///< Name of the cookie
       bool _glutenFree = false;   ///< If true, the cookie is gluten free
       float _calories = 0;        ///< Amount of calories per 100g
-      int _ingredientsSize = 0;   ///< Capacity for ingredient names
-      int _nIngredients = 0;      ///< Number of ingredient names actually stored
-      std::string* _ingredients = nullptr;   ///< Address of memory block with ingredient names
+      Recipe* _myRecipe = nullptr;   ///< This attribute links the cookie with its recipe
    public:
-      Cookie() = default;
-      Cookie ( const std::string newName, bool isGF, float cals, int nI );
-      Cookie ( const std::string newName, int nI );
+//      Cookie() = default;
+      Cookie ( const std::string newName, bool isGF, float cals, Recipe* recipe );
+      Cookie ( const std::string newName, Recipe* recipe );
       Cookie ( const Cookie& orig );
       virtual ~Cookie ();
       Cookie& setCalories ( float calories );
@@ -38,9 +38,9 @@ class Cookie
       bool isGlutenFree () const;
       Cookie& setName ( const std::string& name );
       std::string getName () const;
-      Cookie& addIngredient ( const std::string& ing );
-      Cookie& operator+ ( const std::string& ing );
+      Recipe* getRecipe ();
       bool operator== ( const Cookie& other );
+      Cookie& operator= ( const Cookie& other );
 };
 
 #endif /* COOKIE_H */
