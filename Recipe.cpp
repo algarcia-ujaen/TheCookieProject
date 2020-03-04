@@ -45,12 +45,15 @@ Recipe::~Recipe ( )
 
 
 Recipe& Recipe::operator+= ( const std::string& ing )
-{
+{  // Ideally: there is room for the new ingredient
    if ( _nIngredients < _ingredientsSize )
    {  _ingredients [ _nIngredients ] = ing;
       _nIngredients++;
       return *this;
    }
+
+   // In case there is no room for the new ingredient, it is a bit more
+   // complicated:
 
    // Declares a pointer for the new block
    std::string* newPtr = nullptr;
