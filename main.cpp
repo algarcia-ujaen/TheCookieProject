@@ -7,10 +7,33 @@ using namespace std;
 
 int main ( int argc, char** argv )
 {
+   // Declare ingredients and set names
+   Ingredient i1, i2, i3;
+
+   i1.setName ( "Flour" );
+   i2.setName ( "Chocolate chips" );
+   i3.setName ( "Milk" );
+
+   // Declare recipe and add ingredients to recipe
+   Recipe recipe1;
+
+   recipe1.addIngredient (i1)
+          .addIngredient (i2)
+          .addIngredient (i3);
+
+   // Create cookie using the recipe
+   Cookie chocolateCookie ( "Chocolate cookie", &recipe1 );
+
+   
+   // TRY DOING THE SAME WITH OBJECTS IN DYNAMIC MEMORY
+
+
+
+
    // This can not be done if we do not provide a default constructor for
    // Cookie
    // Cookie c[10];
-   
+
 //   Cookie c1;
 //   Cookie c2 ( "Chocolate cookie", 3 );
 //
