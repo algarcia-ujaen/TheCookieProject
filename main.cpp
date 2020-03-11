@@ -17,14 +17,14 @@ int main ( int argc, char** argv )
    // Declare recipe and add ingredients to recipe
    Recipe recipe1;
 
-   recipe1.addIngredient (i1)
-          .addIngredient (i2)
-          .addIngredient (i3);
+   recipe1.addIngredient (i1, 50)
+          .addIngredient (i2, 30)
+          .addIngredient (i3, 12.5);
 
    // Create cookie using the recipe
    Cookie chocolateCookie ( "Chocolate cookie", &recipe1 );
 
-   
+
    // TRY DOING THE SAME WITH OBJECTS IN DYNAMIC MEMORY
 
 
