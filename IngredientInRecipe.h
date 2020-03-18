@@ -2,18 +2,20 @@
 #define INGREDIENTINRECIPE_H
 
 #include "Ingredient.h"
+#include "RecipeComponent.h"
 
-class IngredientInRecipe
+class IngredientInRecipe: public RecipeComponent
 {
  public:
    IngredientInRecipe ( ) = default;
-   IngredientInRecipe ( Ingredient& i, float am );
+   IngredientInRecipe ( Ingredient& i, float am, std::string modifier );
    IngredientInRecipe ( const IngredientInRecipe& orig );
    virtual ~IngredientInRecipe ( );
    IngredientInRecipe& setAmount ( float a );
    IngredientInRecipe& setIngredient ( Ingredient& i );
    float getAmount () const;
    Ingredient* getIngredient ();
+   std::string toText ();
  private:
    Ingredient* _ingredient = nullptr;
    float _amount = 0;

@@ -2,21 +2,24 @@
 #ifndef RECIPE_H
 #define RECIPE_H
 
-#include "IngredientInRecipe.h"
+#include "RecipeComponent.h"
+#include "Ingredient.h"
 
-#define MAX_INGREDIENTS 10
+#define MAX_COMPONENTS 10
 
 class Recipe
 {  private:
-      int _nIngredients = 0;      ///< Number of ingredient names actually stored
-      IngredientInRecipe* _ingredients[MAX_INGREDIENTS];   ///< Pointers to ingredients
+      int _nComponents = 0;      ///< Number of ingredient names actually stored
+      RecipeComponent* _components[MAX_COMPONENTS];   ///< Pointers to ingredients
    public:
       Recipe ( );
       Recipe ( const Recipe& orig );
       virtual ~Recipe ( );
-      Recipe& addIngredient ( Ingredient& ing, float amount );
+      Recipe& addIngredient ( Ingredient& ing, float amount, std::string modifier );
+      Recipe& addAction ( std::string description, std::string modifier );
       bool operator== ( const Recipe& other );
       Recipe& operator= ( const Recipe& other );
+      std::string getAsText ();
 };
 
 #endif /* RECIPE_H */

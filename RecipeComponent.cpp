@@ -1,0 +1,25 @@
+#include "RecipeComponent.h"
+
+RecipeComponent::RecipeComponent ( const RecipeComponent& orig ): _modifier ( orig._modifier )
+{ }
+
+RecipeComponent::~RecipeComponent ( )
+{ }
+
+RecipeComponent& RecipeComponent::setModifier ( std::string modifier )
+{
+   this->_modifier = modifier;
+   return *this;
+}
+
+std::string RecipeComponent::getModifier ( ) const
+{
+   return _modifier;
+}
+
+std::string RecipeComponent::toText ( )
+{
+   return _modifier;
+}
+
+

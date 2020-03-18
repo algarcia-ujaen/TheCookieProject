@@ -14,12 +14,22 @@ int main ( int argc, char** argv )
    i2.setName ( "Chocolate chips" );
    i3.setName ( "Milk" );
 
-   // Declare recipe and add ingredients to recipe
+   // Declare recipe and add ingredients and actions to the recipe
    Recipe recipe1;
 
-   recipe1.addIngredient (i1, 50)
-          .addIngredient (i2, 30)
-          .addIngredient (i3, 12.5);
+   recipe1.addAction ( "Take a bowl", "big enough" )
+          .addAction ( "Add", "" )
+          .addIngredient ( i1, 50, "sifted" )
+          .addAction ( "Pour", "slowly")
+          .addIngredient ( i3, 12.5, "hot" )
+          .addAction ( "Remove", "with a spoon" )
+          .addIngredient (i2, 30, "white and dark" )
+          .addAction ( "Bake", "20 minutes" );
+
+   // Show the recipe on screen
+   // FOR THE MOMENT THIS DOES NOT WORK AS EXPECTED. WE WILL SEE IN LESSON 4
+   // WHY THIS IS HAPPENING, AND HOW TO SOLVE IT
+   cout << recipe1.getAsText ();
 
    // Create cookie using the recipe
    Cookie chocolateCookie ( "Chocolate cookie", &recipe1 );

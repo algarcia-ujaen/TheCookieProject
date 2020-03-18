@@ -1,30 +1,35 @@
 
 #include <new>
+#include <sstream>
 
 #include "Recipe.h"
+#include "ActionInRecipe.h"
+#include "IngredientInRecipe.h"
 
 Recipe::Recipe ()
-{  for ( int i = 0; i < MAX_INGREDIENTS; i++ )
-   {  _ingredients[i] = nullptr;
+{  for ( int i = 0; i < MAX_COMPONENTS; i++ )
+   {  _components[i] = nullptr;
    }
 }
 
 
-Recipe::Recipe ( const Recipe& orig ): _nIngredients ( orig._nIngredients )
-{  for ( int i = 0; i < _nIngredients; i++ )
-   {  _ingredients[i] = new IngredientInRecipe ( *orig._ingredients[i] );
+Recipe::Recipe ( const Recipe& orig ): _nComponents ( orig._nComponents )
+{  // We are going to solve it in a WRONG way. We will talk about this in
+   // lesson 4
+   for ( int i = 0; i < _nComponents; i++ )
+   {  _components[i] = new RecipeComponent ( *orig._components[i] );
    }
 
-   for ( int i = _nIngredients; i < MAX_INGREDIENTS; i++ )
-   {  _ingredients[i] = nullptr;
+   for ( int i = _nComponents; i < MAX_COMPONENTS; i++ )
+   {  _components[i] = nullptr;
    }
 }
 
 
 Recipe::~Recipe ( )
-{  for ( int i = 0; i < _nIngredients; i++ )
-   {  delete _ingredients[i];
-      _ingredients[i] = nullptr;
+{  for ( int i = 0; i < _nComponents; i++ )
+   {  delete _components[i];
+      _components[i] = nullptr;
    }
 }
 
@@ -42,18 +47,32 @@ Recipe::~Recipe ( )
 //}
 
 
-Recipe& Recipe::addIngredient ( Ingredient& ing, float amount )
+Recipe& Recipe::addIngredient ( Ingredient& ing, float amount, std::string modifier )
 {  // Check that we have a pointer available for the new ingredient
-   if ( _nIngredients >= MAX_INGREDIENTS )
-   {  throw std::string ( "Recipe::operator+= : no room for the new ingredient!" );
+   if ( _nComponents >= MAX_COMPONENTS )
+   {  throw std::string ( "Recipe::addIngredient : no room for the new ingredient!" );
    }
 
-   _ingredients [ _nIngredients ] = new IngredientInRecipe ( ing, amount );
-   _nIngredients++;
+   _components [ _nComponents ] = new IngredientInRecipe ( ing, amount, modifier );
+   _nComponents++;
 
    // Returns the reference (just in case)
    return *this;
 }
+
+Recipe& Recipe::addAction ( std::string description, std::string modifier )
+{  // Check that we have a pointer available for the new ingredient
+   if ( _nComponents >= MAX_COMPONENTS )
+   {  throw std::string ( "Recipe::addAction : no room for the new action!" );
+   }
+
+   _components [ _nComponents ] = new ActionInRecipe ( description, modifier );
+   _nComponents++;
+
+   // Returns the reference (just in case)
+   return *this;
+}
+
 
 
 bool Recipe::operator== ( const Recipe& other )
@@ -83,4 +102,16 @@ Recipe& Recipe::operator= ( const Recipe& other )
    }
 
    return *this;
+}
+
+std::string Recipe::getAsText ( )
+{
+   std::stringstream aux;
+
+   for ( int i = 0; i < _nComponents; i++ )
+   {
+      aux << _components[i]->toText () << std::endl;
+   }
+
+   return aux.str ();
 }

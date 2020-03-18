@@ -12,12 +12,18 @@
  */
 
 #include "IngredientInRecipe.h"
+#include <sstream>
 
-IngredientInRecipe::IngredientInRecipe ( Ingredient& i, float am ): _amount ( am ),
-                                                                    _ingredient ( &i )
-{ }
+IngredientInRecipe::IngredientInRecipe ( Ingredient& i, float am,
+                                         std::string modifier ): RecipeComponent (),
+                                                                 _amount ( am ),
+                                                                 _ingredient ( &i )
+{
+   setModifier ( modifier );
+}
 
-IngredientInRecipe::IngredientInRecipe ( const IngredientInRecipe& orig ): _amount ( orig._amount ),
+IngredientInRecipe::IngredientInRecipe ( const IngredientInRecipe& orig ): RecipeComponent ( orig ),
+                                                                           _amount ( orig._amount ),
                                                                            _ingredient ( orig._ingredient )
 { }
 
@@ -35,11 +41,21 @@ Ingredient* IngredientInRecipe::getIngredient ( )
 }
 
 IngredientInRecipe& IngredientInRecipe::setAmount ( float a )
-{   _amount = a;
+{  _amount = a;
+   return *this;
 }
 
 IngredientInRecipe& IngredientInRecipe::setIngredient ( Ingredient& i )
 {  _ingredient = &i;
+   return *this;
+}
+
+std::string IngredientInRecipe::toText ( )
+{
+   std::stringstream aux;
+   aux << "Use " << _amount << " of " << getModifier ()
+       << " " << _ingredient->getName ();
+   return aux.str ();
 }
 
 
