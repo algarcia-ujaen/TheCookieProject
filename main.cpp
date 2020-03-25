@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "Cookie.h"
+#include "IngredientInRecipe.h"
 
 using namespace std;
 
@@ -33,7 +34,6 @@ int main ( int argc, char** argv )
 
    // Create cookie using the recipe
    Cookie chocolateCookie ( "Chocolate cookie", &recipe1 );
-
 
    // TRY DOING THE SAME WITH OBJECTS IN DYNAMIC MEMORY
 

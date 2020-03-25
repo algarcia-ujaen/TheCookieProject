@@ -16,6 +16,8 @@ class ActionInRecipe: public RecipeComponent
       ActionInRecipe& setDescription ( std::string description );
       std::string getDescription ( ) const ;
       std::string toText ();
+      
+      ActionInRecipe& operator= ( const ActionInRecipe& other );
 } ;
 
 #endif /* ACTIONINRECIPE_H */

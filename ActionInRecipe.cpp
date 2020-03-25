@@ -33,3 +33,14 @@ std::string ActionInRecipe::toText ( )
    return aux.str ();
 }
 
+ActionInRecipe& ActionInRecipe::operator = ( const ActionInRecipe& other )
+{
+   if ( this != &other )
+   {
+      _description = other._description;
+      
+      RecipeComponent::operator = ( other );
+   }
+
+   return *this;
+}

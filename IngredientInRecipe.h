@@ -16,6 +16,8 @@ class IngredientInRecipe: public RecipeComponent
    float getAmount () const;
    Ingredient* getIngredient ();
    std::string toText ();
+   
+   IngredientInRecipe& operator= ( const IngredientInRecipe& other );
  private:
    Ingredient* _ingredient = nullptr;
    float _amount = 0;

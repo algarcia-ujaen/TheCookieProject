@@ -58,7 +58,18 @@ std::string IngredientInRecipe::toText ( )
    return aux.str ();
 }
 
+IngredientInRecipe& IngredientInRecipe::operator= ( const IngredientInRecipe& other )
+{
+   if ( this != &other )
+   {
+      _ingredient = other._ingredient;
+      _amount = other._amount;
 
+      RecipeComponent::operator = ( other );
+   }
+
+   return *this;
+}
 
 
 

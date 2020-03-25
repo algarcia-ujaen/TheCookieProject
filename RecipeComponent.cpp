@@ -1,5 +1,8 @@
 #include "RecipeComponent.h"
 
+RecipeComponent::RecipeComponent ( const std::string& m ): _modifier ( m )
+{ }
+
 RecipeComponent::RecipeComponent ( const RecipeComponent& orig ): _modifier ( orig._modifier )
 { }
 
@@ -22,4 +25,13 @@ std::string RecipeComponent::toText ( )
    return _modifier;
 }
 
+RecipeComponent& RecipeComponent::operator = ( const RecipeComponent& other )
+{
+   if ( this != &other )
+   {
+      _modifier = other._modifier;
+   }
+
+   return *this;
+}
 
