@@ -15,7 +15,7 @@ class IngredientInRecipe: public RecipeComponent
    IngredientInRecipe& setIngredient ( Ingredient& i );
    float getAmount () const;
    Ingredient* getIngredient ();
-   std::string toText ();
+   virtual std::string toText () override;
    
    IngredientInRecipe& operator= ( const IngredientInRecipe& other );
  private:

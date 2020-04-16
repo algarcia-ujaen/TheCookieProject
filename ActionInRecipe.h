@@ -15,7 +15,7 @@ class ActionInRecipe: public RecipeComponent
       virtual ~ActionInRecipe ( );
       ActionInRecipe& setDescription ( std::string description );
       std::string getDescription ( ) const ;
-      std::string toText ();
+      virtual std::string toText () override;
       
       ActionInRecipe& operator= ( const ActionInRecipe& other );
 } ;

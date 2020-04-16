@@ -15,7 +15,7 @@ class RecipeComponent
       virtual ~RecipeComponent ( );
       RecipeComponent& setModifier ( std::string modifier );
       std::string getModifier ( ) const ;
-      std::string toText ();
+      virtual std::string toText ();
       
       RecipeComponent& operator= ( const RecipeComponent& other );
 } ;
