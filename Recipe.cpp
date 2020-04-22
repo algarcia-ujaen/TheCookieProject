@@ -14,10 +14,9 @@ Recipe::Recipe ()
 
 
 Recipe::Recipe ( const Recipe& orig ): _nComponents ( orig._nComponents )
-{  // We are going to solve it in a WRONG way. We will talk about this in
-   // lesson 4
+{  // NOW IT WORKS!!!!
    for ( int i = 0; i < _nComponents; i++ )
-   {  _components[i] = new RecipeComponent ( *orig._components[i] );
+   {  _components[i] = orig._components[i]->copyMe ();
    }
 
    for ( int i = _nComponents; i < MAX_COMPONENTS; i++ )

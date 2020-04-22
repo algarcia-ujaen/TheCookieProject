@@ -18,6 +18,7 @@ class RecipeComponent
       virtual std::string toText ();
       
       RecipeComponent& operator= ( const RecipeComponent& other );
+      virtual RecipeComponent* copyMe() = 0;
 } ;
 
 #endif /* RECIPECOMPONENT_H */

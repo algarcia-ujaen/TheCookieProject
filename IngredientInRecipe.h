@@ -6,21 +6,23 @@
 
 class IngredientInRecipe: public RecipeComponent
 {
- public:
-   IngredientInRecipe ( ) = default;
-   IngredientInRecipe ( Ingredient& i, float am, std::string modifier );
-   IngredientInRecipe ( const IngredientInRecipe& orig );
-   virtual ~IngredientInRecipe ( );
-   IngredientInRecipe& setAmount ( float a );
-   IngredientInRecipe& setIngredient ( Ingredient& i );
-   float getAmount () const;
-   Ingredient* getIngredient ();
-   virtual std::string toText () override;
-   
-   IngredientInRecipe& operator= ( const IngredientInRecipe& other );
- private:
-   Ingredient* _ingredient = nullptr;
-   float _amount = 0;
+   private:
+      Ingredient* _ingredient = nullptr;
+      float _amount = 0;
+   public:
+      IngredientInRecipe ( ) = default;
+      IngredientInRecipe ( Ingredient& i, float am, std::string modifier );
+      IngredientInRecipe ( const IngredientInRecipe& orig );
+      virtual ~IngredientInRecipe ( );
+      IngredientInRecipe& setAmount ( float a );
+      IngredientInRecipe& setIngredient ( Ingredient& i );
+      float getAmount () const;
+      Ingredient* getIngredient ();
+      virtual std::string toText () override;
+      
+      IngredientInRecipe& operator= ( const IngredientInRecipe& other );
+
+      virtual RecipeComponent* copyMe () override;
 } ;
 
 #endif /* INGREDIENTINRECIPE_H */

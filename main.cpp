@@ -73,6 +73,9 @@ int main ( int argc, char** argv )
 //   {
 //
 //   }
+
+   Recipe r2 (recipe1);
+   std::cout << r2.getAsText () << endl;
    return 0;
 }
 

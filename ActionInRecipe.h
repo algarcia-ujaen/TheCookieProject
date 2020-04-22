@@ -18,6 +18,8 @@ class ActionInRecipe: public RecipeComponent
       virtual std::string toText () override;
       
       ActionInRecipe& operator= ( const ActionInRecipe& other );
+      
+      virtual RecipeComponent* copyMe () override;
 } ;
 
 #endif /* ACTIONINRECIPE_H */

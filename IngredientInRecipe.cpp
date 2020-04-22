@@ -71,5 +71,10 @@ IngredientInRecipe& IngredientInRecipe::operator= ( const IngredientInRecipe& ot
    return *this;
 }
 
+RecipeComponent* IngredientInRecipe::copyMe ( )
+{
+   RecipeComponent* toRet = new IngredientInRecipe ( *this );
+   return toRet;
+}
 
 
