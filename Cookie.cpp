@@ -9,6 +9,7 @@
 #include <new>
 
 #include "Cookie.h"
+#include "cookieException.h"
 
 /**
  * @brief Completely parameterized constructor
@@ -19,29 +20,30 @@
  * @param cals Amount of calories per 100g
  * @param recipe Memory address of a Recipe object that contains the recipe for
  *               the cookie
- * @throw std::string If the value of cals or nI is less than or equal to 0, or
- *                    no recipe is given (i.e. recipe is nullptr)
+ * @throw cookieException If the value of cals or nI is less than or equal to 0, or
+ *                        no recipe is given (i.e. recipe is nullptr)
  */
 Cookie::Cookie ( const std::string newName, bool isGF,
                  float cals, Recipe* recipe ) try : _name ( newName ), _glutenFree ( isGF ),
                                             _calories ( cals ), _myRecipe ( recipe )
 {  if ( cals <= 0 )
-   {  throw std::string ( "The calories can not be less than 0" );
+   {  throw cookieException ( "The calories can not be less than 0" );
    }
 
    if ( recipe == nullptr )
-   {  throw std::string ( "A cookie can not be created without a recipe" );
+   {  throw cookieException ( "A cookie can not be created without a recipe" );
    }
 }
-catch ( std::string& e )
-{  throw std::string ( "Cookie::Cookie: Error creating the cookie ->" + e );
+catch ( cookieException& e )
+{  std::string aux = "Cookie::Cookie: Error creating the cookie ->";
+   throw cookieException ( aux + e.what () );
 }
 
 
 Cookie::Cookie ( const std::string newName, Recipe* recipe ): _name ( newName ),
                                                               _myRecipe ( recipe )
 {  if ( recipe == nullptr )
-   {  throw std::string ( "A cookie can not be created without a recipe" );
+   {  throw cookieException ( "A cookie can not be created without a recipe" );
    }
 }
 
