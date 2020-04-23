@@ -17,12 +17,12 @@
 #include <stdexcept>
 
 
-class cookieException: public std::logic_error
+class CookieException: public std::logic_error
 {
    public:
-      cookieException ( std::string mensaje );
-      cookieException ( const cookieException& orig );
-      virtual ~cookieException ( ) noexcept;
+      CookieException ( std::string mensaje );
+      CookieException ( const CookieException& orig );
+      virtual ~CookieException ( ) noexcept;
 } ;
 
 #endif /* COOKIEEXCEPTION_H */

@@ -11,16 +11,16 @@
  * Created on 23 de abril de 2020, 12:09
  */
 
-#include "cookieException.h"
+#include "CookieException.h"
 
-cookieException::cookieException ( std::string mensaje ):
+CookieException::CookieException ( std::string mensaje ):
                                  std::logic_error ( mensaje )
 { }
 
-cookieException::cookieException ( const cookieException& orig ):
+CookieException::CookieException ( const CookieException& orig ):
                                  std::logic_error ( orig )
 { }
 
-cookieException::~cookieException ( )
+CookieException::~CookieException ( )
 { }
 

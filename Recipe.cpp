@@ -5,7 +5,7 @@
 #include "Recipe.h"
 #include "ActionInRecipe.h"
 #include "IngredientInRecipe.h"
-#include "cookieException.h"
+#include "CookieException.h"
 
 Recipe::Recipe ()
 {  for ( int i = 0; i < MAX_COMPONENTS; i++ )
@@ -50,7 +50,7 @@ Recipe::~Recipe ( )
 Recipe& Recipe::addIngredient ( Ingredient& ing, float amount, std::string modifier )
 {  // Check that we have a pointer available for the new ingredient
    if ( _nComponents >= MAX_COMPONENTS )
-   {  throw cookieException ( "Recipe::addIngredient : no room for the new ingredient!" );
+   {  throw CookieException ( "Recipe::addIngredient : no room for the new ingredient!" );
    }
 
    _components [ _nComponents ] = new IngredientInRecipe ( ing, amount, modifier );
@@ -63,7 +63,7 @@ Recipe& Recipe::addIngredient ( Ingredient& ing, float amount, std::string modif
 Recipe& Recipe::addAction ( std::string description, std::string modifier )
 {  // Check that we have a pointer available for the new ingredient
    if ( _nComponents >= MAX_COMPONENTS )
-   {  throw cookieException ( "Recipe::addAction : no room for the new action!" );
+   {  throw CookieException ( "Recipe::addAction : no room for the new action!" );
    }
 
    _components [ _nComponents ] = new ActionInRecipe ( description, modifier );

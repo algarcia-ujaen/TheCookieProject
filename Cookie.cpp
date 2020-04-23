@@ -9,7 +9,7 @@
 #include <new>
 
 #include "Cookie.h"
-#include "cookieException.h"
+#include "CookieException.h"
 
 /**
  * @brief Completely parameterized constructor
@@ -27,23 +27,23 @@ Cookie::Cookie ( const std::string newName, bool isGF,
                  float cals, Recipe* recipe ) try : _name ( newName ), _glutenFree ( isGF ),
                                             _calories ( cals ), _myRecipe ( recipe )
 {  if ( cals <= 0 )
-   {  throw cookieException ( "The calories can not be less than 0" );
+   {  throw CookieException ( "The calories can not be less than 0" );
    }
 
    if ( recipe == nullptr )
-   {  throw cookieException ( "A cookie can not be created without a recipe" );
+   {  throw CookieException ( "A cookie can not be created without a recipe" );
    }
 }
-catch ( cookieException& e )
+catch ( CookieException& e )
 {  std::string aux = "Cookie::Cookie: Error creating the cookie ->";
-   throw cookieException ( aux + e.what () );
+   throw CookieException ( aux + e.what () );
 }
 
 
 Cookie::Cookie ( const std::string newName, Recipe* recipe ): _name ( newName ),
                                                               _myRecipe ( recipe )
 {  if ( recipe == nullptr )
-   {  throw cookieException ( "A cookie can not be created without a recipe" );
+   {  throw CookieException ( "A cookie can not be created without a recipe" );
    }
 }
 
