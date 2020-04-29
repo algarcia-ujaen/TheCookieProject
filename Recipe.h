@@ -20,6 +20,8 @@ class Recipe
       bool operator== ( const Recipe& other );
       Recipe& operator= ( const Recipe& other );
       std::string getAsText ();
+      int getNComponents () const;
+      RecipeComponent* getComponent ( int index );
 };
 
 #endif /* RECIPE_H */

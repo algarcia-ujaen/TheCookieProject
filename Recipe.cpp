@@ -115,3 +115,19 @@ std::string Recipe::getAsText ( )
 
    return aux.str ();
 }
+
+int Recipe::getNComponents ( ) const
+{
+   return _nComponents;
+}
+
+
+RecipeComponent* Recipe::getComponent ( int index )
+{
+   if ( ( index < 0 ) || ( index >= _nComponents ) )
+   {
+      throw CookieException ( "[Recipe::getComponent]: index out of bounds" );
+   }
+
+   return _components[index];
+}

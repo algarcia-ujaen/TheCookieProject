@@ -6,6 +6,18 @@
 
 using namespace std;
 
+void multiplyIngredients ( int factor, Recipe& r )
+{
+   for ( int i = 0; i < r.getNComponents (); i++ )
+   {
+      IngredientInRecipe* aux = dynamic_cast<IngredientInRecipe*>( r.getComponent ( i ) );
+      if ( aux != nullptr )
+      {
+         aux->setAmount ( aux->getAmount () * factor );
+      }
+   }
+}
+
 int main ( int argc, char** argv )
 {
    // Declare ingredients and set names
@@ -75,7 +87,9 @@ int main ( int argc, char** argv )
 //   }
 
    Recipe r2 (recipe1);
-   std::cout << r2.getAsText () << endl;
+   multiplyIngredients ( 2, r2 );
+   std::cout << "----------" << std::endl;
+   std::cout << r2.getAsText () << std::endl;
    return 0;
 }
 
